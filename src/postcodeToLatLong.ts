@@ -17,7 +17,7 @@ export async function postCodeToLatLong(postcode : string):Promise<Coordinates>{
     };
     return ret;
   } else {
-    console.log('Couldnt convert to long lat');
+    console.log('ERROR: Failed to convert postcode to Lat/Long');
   }
   return null;
 }

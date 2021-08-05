@@ -24,3 +24,4 @@ export class MongoService {
 
 const mongoService = new MongoService();
 export default mongoService;
+

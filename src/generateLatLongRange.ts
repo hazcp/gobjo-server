@@ -7,14 +7,16 @@ export interface SearchArea {
 }
 
 export function generateLatLongRange(coordinates: Coordinates, distance: number): SearchArea{
+  const hypotenuseLength = Math.sqrt(2*Math.pow(distance, 2));
+
   const northWest = geolib.computeDestinationPoint(
     { latitude: coordinates.lat, longitude: coordinates.long },
-    distance,
+    hypotenuseLength,
     315.0
   );
   const southEast = geolib.computeDestinationPoint(
     { latitude: coordinates.lat, longitude: coordinates.long },
-    distance,
+    hypotenuseLength,
     135.0
   );
   return {

@@ -10,7 +10,6 @@ export class StudentController {
 
   @Get()
   async findAllStudents() {
-
     return await mongoService.db.collection('students').find().toArray();
   }
 
@@ -52,14 +51,14 @@ export class StudentController {
 
   @Post()
   async createStudent(@Body() body: any) {
-    const result = await mongoService.db.collection('students').insertOne({
+    const student = await mongoService.db.collection('students').insertOne({
       email: body.email,
-      password: body.password, //TODO: hash password
+      password: body.password,
       pageNumber: 1
     });
-    const id = result.insertedId;
+    const idStudent = student.insertedId;
     return await mongoService.db.collection('students').findOne({
-      _id: new ObjectId(id)
+      _id: new ObjectId(idStudent)
     })
   }
 
